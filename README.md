@@ -3,9 +3,11 @@ This is a simple beginner tutorial package for ROS. It contains a simple publish
 See more details please see at :http://wiki.ros.org/ROS/Tutorials.
 
 If you don't know what ROS is, please check at:
-https://en.wikipedia.org/wiki/Robot_Operating_System [wiki link](https://en.wikipedia.org/wiki/Robot_Operating_System)
+https://en.wikipedia.org/wiki/Robot_Operating_System
+([wiki link](https://en.wikipedia.org/wiki/Robot_Operating_System))
 and
-http://wiki.ros.org/ [ROS wiki](http://wiki.ros.org/)
+http://wiki.ros.org/
+([ROS wiki](http://wiki.ros.org/))
 
 
 ---
@@ -36,4 +38,4 @@ Open a new terminal, run
 source devel/setup.bash
 rosrun beginner_tutorials beginner_tutorials_listener_node
 ```
-**Note**: Run setup.bash for every terminal you opened if you want to run nodes from beginner_tutorials package. 
+**Note**: Run setup.bash for every terminal you opened if you want to run nodes from beginner_tutorials package.
