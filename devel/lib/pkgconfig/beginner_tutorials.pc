@@ -1,0 +1,8 @@
+prefix=/home/zejiang/ROS_beginner_tutorials_ws/devel
+
+Name: beginner_tutorials
+Description: Description of beginner_tutorials
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/zejiang/ROS_beginner_tutorials_ws/devel/lib 
+Requires: 

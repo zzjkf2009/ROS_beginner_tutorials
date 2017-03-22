@@ -1,0 +1,2 @@
+beginner_tutorials
+-DCATKIN_DEVEL_PREFIX=/home/zejiang/ROS_beginner_tutorials_ws/devel -DCMAKE_INSTALL_PREFIX=/home/zejiang/ROS_beginner_tutorials_ws/install -G Unix Makefiles
