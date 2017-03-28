@@ -9,6 +9,10 @@ and
 http://wiki.ros.org/
 ([ROS wiki](http://wiki.ros.org/))
 
+---
+
+## Prerequisites/Assumptions:
+Install ROS indigo
 
 ---
 
