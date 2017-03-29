@@ -127,8 +127,8 @@ include_directories(
 
 ## Declare a C++ executable
 # add_executable(beginner_tutorials_node src/beginner_tutorials_node.cpp)
-add_executable(beginner_tutorials_talker_node src/talker.cpp)
-add_executable(beginner_tutorials_listener_node src/listener.cpp)
+add_executable(talker src/talker.cpp)
+add_executable(listener src/listener.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -138,8 +138,8 @@ add_executable(beginner_tutorials_listener_node src/listener.cpp)
 # target_link_libraries(beginner_tutorials_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(beginner_tutorials_talker_node ${catkin_LIBRARIES})
-target_link_libraries(beginner_tutorials_listener_node ${catkin_LIBRARIES})
+target_link_libraries(talker ${catkin_LIBRARIES})
+target_link_libraries(listener ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

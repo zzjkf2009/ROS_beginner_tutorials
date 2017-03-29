@@ -244,30 +244,17 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
-# Target rules for targets named beginner_tutorials_listener_node
+# Target rules for targets named listener
 
 # Build rule for target.
-beginner_tutorials_listener_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials_listener_node
-.PHONY : beginner_tutorials_listener_node
+listener: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 listener
+.PHONY : listener
 
 # fast build rule for target.
-beginner_tutorials_listener_node/fast:
-	$(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build
-.PHONY : beginner_tutorials_listener_node/fast
-
-#=============================================================================
-# Target rules for targets named beginner_tutorials_talker_node
-
-# Build rule for target.
-beginner_tutorials_talker_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials_talker_node
-.PHONY : beginner_tutorials_talker_node
-
-# fast build rule for target.
-beginner_tutorials_talker_node/fast:
-	$(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build
-.PHONY : beginner_tutorials_talker_node/fast
+listener/fast:
+	$(MAKE) -f beginner_tutorials/CMakeFiles/listener.dir/build.make beginner_tutorials/CMakeFiles/listener.dir/build
+.PHONY : listener/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_cpp
@@ -386,6 +373,19 @@ std_msgs_generate_messages_py/fast:
 	$(MAKE) -f beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build.make beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+#=============================================================================
+# Target rules for targets named talker
+
+# Build rule for target.
+talker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 talker
+.PHONY : talker
+
+# fast build rule for target.
+talker/fast:
+	$(MAKE) -f beginner_tutorials/CMakeFiles/talker.dir/build.make beginner_tutorials/CMakeFiles/talker.dir/build
+.PHONY : talker/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -406,15 +406,15 @@ help:
 	@echo "... run_tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... beginner_tutorials_listener_node"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... beginner_tutorials_talker_node"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... talker"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... listener"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 .PHONY : help

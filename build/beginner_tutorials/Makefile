@@ -153,32 +153,18 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/rule:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/rule
-.PHONY : beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/rule
+beginner_tutorials/CMakeFiles/listener.dir/rule:
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials/CMakeFiles/listener.dir/rule
+.PHONY : beginner_tutorials/CMakeFiles/listener.dir/rule
 
 # Convenience name for target.
-beginner_tutorials_listener_node: beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/rule
-.PHONY : beginner_tutorials_listener_node
+listener: beginner_tutorials/CMakeFiles/listener.dir/rule
+.PHONY : listener
 
 # fast build rule for target.
-beginner_tutorials_listener_node/fast:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build
-.PHONY : beginner_tutorials_listener_node/fast
-
-# Convenience name for target.
-beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/rule:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/rule
-.PHONY : beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/rule
-
-# Convenience name for target.
-beginner_tutorials_talker_node: beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/rule
-.PHONY : beginner_tutorials_talker_node
-
-# fast build rule for target.
-beginner_tutorials_talker_node/fast:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build
-.PHONY : beginner_tutorials_talker_node/fast
+listener/fast:
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/listener.dir/build.make beginner_tutorials/CMakeFiles/listener.dir/build
+.PHONY : listener/fast
 
 # Convenience name for target.
 beginner_tutorials/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
@@ -306,12 +292,26 @@ std_msgs_generate_messages_py/fast:
 	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build.make beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+# Convenience name for target.
+beginner_tutorials/CMakeFiles/talker.dir/rule:
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f CMakeFiles/Makefile2 beginner_tutorials/CMakeFiles/talker.dir/rule
+.PHONY : beginner_tutorials/CMakeFiles/talker.dir/rule
+
+# Convenience name for target.
+talker: beginner_tutorials/CMakeFiles/talker.dir/rule
+.PHONY : talker
+
+# fast build rule for target.
+talker/fast:
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/talker.dir/build.make beginner_tutorials/CMakeFiles/talker.dir/build
+.PHONY : talker/fast
+
 src/listener.o: src/listener.cpp.o
 .PHONY : src/listener.o
 
 # target to build an object file
 src/listener.cpp.o:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/src/listener.cpp.o
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/listener.dir/build.make beginner_tutorials/CMakeFiles/listener.dir/src/listener.cpp.o
 .PHONY : src/listener.cpp.o
 
 src/listener.i: src/listener.cpp.i
@@ -319,7 +319,7 @@ src/listener.i: src/listener.cpp.i
 
 # target to preprocess a source file
 src/listener.cpp.i:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/src/listener.cpp.i
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/listener.dir/build.make beginner_tutorials/CMakeFiles/listener.dir/src/listener.cpp.i
 .PHONY : src/listener.cpp.i
 
 src/listener.s: src/listener.cpp.s
@@ -327,7 +327,7 @@ src/listener.s: src/listener.cpp.s
 
 # target to generate assembly for a file
 src/listener.cpp.s:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_listener_node.dir/src/listener.cpp.s
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/listener.dir/build.make beginner_tutorials/CMakeFiles/listener.dir/src/listener.cpp.s
 .PHONY : src/listener.cpp.s
 
 src/talker.o: src/talker.cpp.o
@@ -335,7 +335,7 @@ src/talker.o: src/talker.cpp.o
 
 # target to build an object file
 src/talker.cpp.o:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/src/talker.cpp.o
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/talker.dir/build.make beginner_tutorials/CMakeFiles/talker.dir/src/talker.cpp.o
 .PHONY : src/talker.cpp.o
 
 src/talker.i: src/talker.cpp.i
@@ -343,7 +343,7 @@ src/talker.i: src/talker.cpp.i
 
 # target to preprocess a source file
 src/talker.cpp.i:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/src/talker.cpp.i
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/talker.dir/build.make beginner_tutorials/CMakeFiles/talker.dir/src/talker.cpp.i
 .PHONY : src/talker.cpp.i
 
 src/talker.s: src/talker.cpp.s
@@ -351,7 +351,7 @@ src/talker.s: src/talker.cpp.s
 
 # target to generate assembly for a file
 src/talker.cpp.s:
-	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/build.make beginner_tutorials/CMakeFiles/beginner_tutorials_talker_node.dir/src/talker.cpp.s
+	cd /home/zejiang/ROS_beginner_tutorials_ws/build && $(MAKE) -f beginner_tutorials/CMakeFiles/talker.dir/build.make beginner_tutorials/CMakeFiles/talker.dir/src/talker.cpp.s
 .PHONY : src/talker.cpp.s
 
 # Help Target
@@ -361,14 +361,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/local"
-	@echo "... beginner_tutorials_listener_node"
 	@echo "... install/strip"
 	@echo "... edit_cache"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... install"
-	@echo "... beginner_tutorials_talker_node"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... rebuild_cache"
+	@echo "... talker"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -376,6 +375,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... test"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... listener"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... src/listener.o"
