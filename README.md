@@ -26,7 +26,7 @@ rosservice list
 Or try using rosservice call in command-line
 ```
 rosrun beginner_tutorials TalkerService
-rosservice call TalkerService Fighting 300
+rosservice call TalkerService_interaction Fighting 300
 ```
 
 ## Run all nodes using roslaunch
