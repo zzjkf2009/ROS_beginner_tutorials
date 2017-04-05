@@ -21,7 +21,9 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/home/zejiang/ROS_beginner_tutorials_ws/devel/include"
   "/opt/ros/indigo/include"
+  "/home/zejiang/ROS_beginner_tutorials_ws/src/include"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
