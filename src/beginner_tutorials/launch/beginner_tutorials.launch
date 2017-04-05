@@ -14,4 +14,14 @@ default="10"
   name="listener"
   launch-prefix="xterm -e"
 />
+<node pkg="beginner_tutorials"
+      type="TalkerService"
+      name="TalkerService"
+      launch-prefix="xterm -e"
+/>
+<node pkg="beginner_tutorials"
+      type="TalkerClient"
+      name="TalkerClient"
+      launch-prefix="xterm -e"
+/>
 </launch>
