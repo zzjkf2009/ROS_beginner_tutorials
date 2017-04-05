@@ -24,10 +24,12 @@ struct TalkerServiceRequest_
   typedef TalkerServiceRequest_<ContainerAllocator> Type;
 
   TalkerServiceRequest_()
-    : request_string()  {
+    : request_string()
+    , NumOfSoldier(0)  {
     }
   TalkerServiceRequest_(const ContainerAllocator& _alloc)
-    : request_string(_alloc)  {
+    : request_string(_alloc)
+    , NumOfSoldier(0)  {
   (void)_alloc;
     }
 
@@ -35,6 +37,9 @@ struct TalkerServiceRequest_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _request_string_type;
   _request_string_type request_string;
+
+   typedef int64_t _NumOfSoldier_type;
+  _NumOfSoldier_type NumOfSoldier;
 
 
 
@@ -113,12 +118,12 @@ struct MD5Sum< ::beginner_tutorials::TalkerServiceRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "75fc38d9b9e80ab837712849e5f3e47e";
+    return "f0517803766c4cc1400b92ed7919b15a";
   }
 
   static const char* value(const ::beginner_tutorials::TalkerServiceRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x75fc38d9b9e80ab8ULL;
-  static const uint64_t static_value2 = 0x37712849e5f3e47eULL;
+  static const uint64_t static_value1 = 0xf0517803766c4cc1ULL;
+  static const uint64_t static_value2 = 0x400b92ed7919b15aULL;
 };
 
 template<class ContainerAllocator>
@@ -138,7 +143,7 @@ struct Definition< ::beginner_tutorials::TalkerServiceRequest_<ContainerAllocato
   static const char* value()
   {
     return "string request_string\n\
-\n\
+int64  NumOfSoldier\n\
 ";
   }
 
@@ -158,6 +163,7 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.request_string);
+      stream.next(m.NumOfSoldier);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -178,6 +184,8 @@ struct Printer< ::beginner_tutorials::TalkerServiceRequest_<ContainerAllocator> 
   {
     s << indent << "request_string: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.request_string);
+    s << indent << "NumOfSoldier: ";
+    Printer<int64_t>::stream(s, indent + "  ", v.NumOfSoldier);
   }
 };
 
