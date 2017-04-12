@@ -1,39 +1,76 @@
 # Overview
 
-This is a practice project for creating a service with server and client node, and a launch file
-that will compile all the nodes at once.
-
+This is a practice project for learning TF, gtest/rostest and rosbag
 ## Assumption
-Assume ROS indigo is installed
-
-## The TalkerService and TalkerClient node
-The service node is written in C++, and it response a string when a string and a integer are sent from the client node. A custom message type "TalkerService" is used for this example. It can be viewed in srv folder, in  "TalkerService.srv"
-
-## Execution
+Assume ROS indigo is installed and run the roscore
 
 Put it to your catkin workspace
+if not, don't forget to run 
+```
+source ./devel/setup.basg
+```
+## TF
+### Set up 
+Install it first
+```
+sudo apt-get install ros-indigo-ros-tutorials ros-indigo-geometry-tutorials ros-indigo-rviz ros-indigo-rosbash ros-indigo-rqt-tf-tree
+```
+the source file TalkerBroadcaster.cpp will broadcaste a static frame transform by run
+```
+rosrun beginner_tutorials talkerbroadcaster
+rosrun tf tf_echo world talk
+```
+The transform between two frame "world" and "talk" will be printed as
+```
+At time 1491965868.713
+- Translation: [1.000, 0.200, 2.000]
+- Rotation: in Quaternion [0.000, 0.196, 0.000, 0.981]
+            in RPY (radian) [0.000, 0.395, 0.000]
+            in RPY (degree) [0.000, 22.620, 0.000]
+```
+To start the tool for visualizing
+```
+rosrun rqt_tf_tree rqt_tf_tree
+```
+To create a dirgram (pdf) of the frames being broadcast by tf
+```
+rosrun tf view_frames
+```
+## ROS unit test
+See more details at http://wiki.ros.org/gtest
 
-execute the service
-```
-rosrun beginner_tutorials TalkerService
-rosrun beginner_tutorials TalkerClient
+a rostest source file and launch file are created in the test folder
 
+**Run the test**
 ```
-To check the service
+catkin_make
+catkin_make run_tests_beginner_tutorials
 ```
-rosservice list
+or
 ```
-Or try using rosservice call in command-line
+rostest beginner_tutorials test.launch
 ```
-rosrun beginner_tutorials TalkerService
-rosservice call TalkerService Fighting 300
+## ROSbag, record and display topics
+A launch file is create to start all four nodes and reording all the topics. It is at launch directory,"beginner_tutorials.launch"
+A argument is set to enable or disable the bag recording 
+execute the launch and **do** reording
 ```
-
-## Run all nodes using roslaunch
-A launch file is create to start all four nodes. It is at launch directory,"beginner_tutorials.launch"
-A argument is set to change the print frequency of the talker node, which can be set from command-line here.
-execute the launch
+roslaunch beginner_tutorials beginner_tutorials.launch  
 ```
-roslaunch beginner_tutorials beginner_tutorials.launch  PrintFreq:=1
+It will create a bag file which is named as "year-date-time.bag", like "2017-04-11-20-28-16.bag"
+**Disable recording**
 ```
-The default frequency is 10(Hz), if no argument is inputed
+roslaunch beginner_tutorials beginner_tutorials.launch enablerecord:=0 
+```
+## Inspecting the bag file
+The bag files should be put into folder "bagfile" and to check the info of them, do
+```
+rosbag info *.bag
+```
+## Playing back with listener node
+do
+```
+rosrun beginner_tutorials listener
+rosbag play *.bag
+```
+now listener node will print things on screen 

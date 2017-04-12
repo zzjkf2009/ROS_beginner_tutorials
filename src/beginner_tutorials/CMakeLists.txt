@@ -5,7 +5,7 @@ project(beginner_tutorials)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp std_msgs message_generation tf
+  roscpp std_msgs message_generation tf rostest
 )
 
 ## System dependencies are found with CMake's conventions
