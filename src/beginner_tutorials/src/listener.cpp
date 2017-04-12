@@ -16,7 +16,7 @@
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
   ROS_INFO("I get from Zejiang's custom string from talker_node: [%s]",
            msg->data.c_str());
-}
+}        
 
 int main(int argc, char **argv) {
   /**

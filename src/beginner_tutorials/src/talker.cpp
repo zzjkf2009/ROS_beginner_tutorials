@@ -4,13 +4,37 @@
 *@Copyright This file is part of beginner_totorials which is released by wiki
 *           Please go to http://wiki.ros.org/ROS/Tutorials/ for full
 *           license details.
-*@brief This tutorial demonstrates simple sending of messages over the ROS
-*       system.
+*@brief This tutorial is modified from publisher tutorials
 */
 
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+
+class ROStalker {
+public:
+  ROStalker(){
+         msg_pub = nh.advertise<std_msgs::String>("chatter", 1000);
+     }
+     ros::NodeHandle nh;
+     ros::Publisher msg_pub;
+     void talk();
+     int add(int, int);
+};
+
+void ROStalker::talk(){
+    std_msgs::String msg;
+    std::stringstream ss;
+    ss<<"This is a custom string with its count number ";
+    msg.data = ss.str();
+    ROS_INFO("%s", msg.data.c_str());
+    msg_pub.publish(msg);
+}
+
+int ROStalker::add(int a, int b){
+    return a + b;
+}
+
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
@@ -26,12 +50,13 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "talker");
+
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
    * NodeHandle destructed will close down the node.
    */
-  ros::NodeHandle n;
+//  ros::NodeHandle n;
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -48,9 +73,9 @@ int main(int argc, char **argv) {
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-  ros::Publisher chatter_pub = n.advertise < std_msgs::String
-      > ("chatter", 1000);
-
+//  ros::Publisher chatter_pub = n.advertise < std_msgs::String
+    //  > ("chatter", 1000);
+  ROStalker rt;
   double frequency;
   const std::string PARAM_NAME ="~TalkerFrequency";
   bool setF=ros::param::get(PARAM_NAME,frequency);
@@ -66,10 +91,11 @@ int main(int argc, char **argv) {
    */
   int count = 0;
   while (ros::ok()) {
+    rt.talk();
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
-    std_msgs::String msg;
+  /*  std_msgs::String msg;
     std::stringstream ss;
     ss << "This is a custom string with its count number " <<frequency;
     msg.data = ss.str();
@@ -80,7 +106,7 @@ int main(int argc, char **argv) {
      * given as a template parameter to the advertise<>() call, as was done
      * in the constructor above.
      */
-    chatter_pub.publish(msg);
+  //  chatter_pub.publish(msg);
     ros::spinOnce();
     loop_rate.sleep();
     ++count;

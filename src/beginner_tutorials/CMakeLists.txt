@@ -5,7 +5,7 @@ project(beginner_tutorials)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp std_msgs message_generation
+  roscpp std_msgs message_generation tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -123,7 +123,8 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-   ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/include
+  ${GTEST_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -143,13 +144,14 @@ add_executable(talker src/talker.cpp)
 add_executable(listener src/listener.cpp)
 add_executable(TalkerService src/TalkerService.cpp)
 add_executable(TalkerClient src/TalkerClient.cpp)
+add_executable(talkerbroadcaster src/TalkerBroadcaster.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(beginner_tutorials_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_dependencies(TalkerService ${beginner_tutorials_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(TalkerService TalkerService_msgs_generate_messages_cpp)
+# add_dependencies(TalkerService TalkerService_msgs_generate_messages_cpp)
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(beginner_tutorials_node
 #   ${catkin_LIBRARIES}
@@ -158,6 +160,8 @@ target_link_libraries(talker ${catkin_LIBRARIES})
 target_link_libraries(listener ${catkin_LIBRARIES})
 target_link_libraries(TalkerService ${catkin_LIBRARIES})
 target_link_libraries(TalkerClient ${catkin_LIBRARIES})
+target_link_libraries(talkerbroadcaster ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############
@@ -205,3 +209,9 @@ target_link_libraries(TalkerClient ${catkin_LIBRARIES})
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+if(CATKIN_ENABLE_TESTING)
+find_package(rostest REQUIRED)
+catkin_add_gtest(talkertest test/test.launch test/test.cpp)
+target_link_libraries(talkertest ${catkin_LIBRARIES})
+add_dependencies(talkertest ${PROJECT_NAME}_generate_messages_cpp   ${catkin_EXPORTED_TARGETS})
+endif()
