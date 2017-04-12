@@ -1,45 +1,39 @@
-# ROS_beginner_tutorials
-This is a simple beginner tutorial package for ROS. It contains a simple publisher node and a subscriber node in C++. The publisher will publish string message to the screen and the subscriber will receive the message and print it out.
-See more details please see at :http://wiki.ros.org/ROS/Tutorials.
+# Overview
 
-If you don't know what ROS is, please check at:
-https://en.wikipedia.org/wiki/Robot_Operating_System
-([wiki link](https://en.wikipedia.org/wiki/Robot_Operating_System))
-and
-http://wiki.ros.org/
-([ROS wiki](http://wiki.ros.org/))
+This is a practice project for creating a service with server and client node, and a launch file
+that will compile all the nodes at once.
 
----
+## Assumption
+Assume ROS indigo is installed
 
-## Prerequisites/Assumptions:
-Install ROS indigo
+## The TalkerService and TalkerClient node
+The service node is written in C++, and it response a string when a string and a integer are sent from the client node. A custom message type "TalkerService" is used for this example. It can be viewed in srv folder, in  "TalkerService.srv"
 
----
+## Execution
 
-## Build
-To build the package
+Put it to your catkin workspace
+
+execute the service
 ```
-cd ROS_beginner_tutorials_ws
-catkin_make
+rosrun beginner_tutorials TalkerService
+rosrun beginner_tutorials TalkerClient
+
 ```
-If every thing is correct, the result is supposed to be something like:
+To check the service
 ```
-[ 50%] Built target beginner_tutorials_talker_node
-[100%] Built target beginner_tutorials_listener_node
+rosservice list
+```
+Or try using rosservice call in command-line
+```
+rosrun beginner_tutorials TalkerService
+rosservice call TalkerService_interaction Fighting 300
 ```
 
----
-
-## Run
-To run the node:
-At ROS_beginner_tutorials_ws
+## Run all nodes using roslaunch
+A launch file is create to start all four nodes. It is at launch directory,"beginner_tutorials.launch"
+A argument is set to change the print frequency of the talker node, which can be set from command-line here.
+execute the launch
 ```
-source devel/setup.bash
-rosrun beginner_tutorials beginner_tutorials_talker_node
+roslaunch beginner_tutorials beginner_tutorials.launch  PrintFreq:=1
 ```
-Open a new terminal, run
-```
-source devel/setup.bash
-rosrun beginner_tutorials beginner_tutorials_listener_node
-```
-**Note**: Run setup.bash for every terminal you opened if you want to run nodes from beginner_tutorials package.
+The default frequency is 10(Hz), if no argument is inputed

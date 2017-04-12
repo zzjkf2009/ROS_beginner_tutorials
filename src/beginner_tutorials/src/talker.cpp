@@ -50,7 +50,16 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise < std_msgs::String
       > ("chatter", 1000);
-  ros::Rate loop_rate(10);
+
+  double frequency;
+  const std::string PARAM_NAME ="~TalkerFrequency";
+  bool setF=ros::param::get(PARAM_NAME,frequency);
+  if (!setF) {
+    ROS_WARN_STREAM("Using defalt frequency 10");
+    frequency=10;
+  }
+  //ROS_INFO("Frequency is "<<frequency);
+  ros::Rate loop_rate(frequency);
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
@@ -62,7 +71,7 @@ int main(int argc, char **argv) {
      */
     std_msgs::String msg;
     std::stringstream ss;
-    ss << "This is a custom string with its count number " << count;
+    ss << "This is a custom string with its count number " <<frequency;
     msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());
     /**

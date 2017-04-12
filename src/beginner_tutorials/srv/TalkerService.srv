@@ -1,0 +1,5 @@
+string request_string
+int64  NumOfSoldier
+---
+string response_string
+

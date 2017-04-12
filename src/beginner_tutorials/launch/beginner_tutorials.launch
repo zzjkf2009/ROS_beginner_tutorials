@@ -1,0 +1,27 @@
+<launch>
+<arg
+name="PrintFreq"
+default="10"
+/>
+<node pkg="beginner_tutorials"
+  type="talker"
+  name="talker"
+  launch-prefix="xterm -e"
+> <param name="TalkerFrequency" value="$(arg PrintFreq)"/>
+</node>
+<node pkg="beginner_tutorials"
+  type="listener"
+  name="listener"
+  launch-prefix="xterm -e"
+/>
+<node pkg="beginner_tutorials"
+      type="TalkerService"
+      name="TalkerService"
+      launch-prefix="xterm -e"
+/>
+<node pkg="beginner_tutorials"
+      type="TalkerClient"
+      name="TalkerClient"
+      launch-prefix="xterm -e"
+/>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/zejiang/ROS_beginner_tutorials_ws/install
+
+Name: ros_service_examples
+Description: Description of ros_service_examples
+Version: 0.7.3
+Cflags: -I/home/zejiang/ROS_beginner_tutorials_ws/install/include
+Libs: -L/home/zejiang/ROS_beginner_tutorials_ws/install/lib 
+Requires: roscpp roslib message_runtime

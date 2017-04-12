@@ -5,7 +5,7 @@ project(beginner_tutorials)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  roscpp std_msgs message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -55,6 +55,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   Service2.srv
 # )
 
+ add_service_files(
+   FILES
+   TalkerService.srv
+ )
+
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
@@ -68,6 +73,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   std_msgs  # Or other packages containing msgs
 # )
 
+
+ generate_messages(
+   DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+ )
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
@@ -113,6 +123,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+   ${CMAKE_SOURCE_DIR}/include
 )
 
 ## Declare a C++ library
@@ -125,21 +136,28 @@ include_directories(
 ## either from message generation or dynamic reconfigure
 # add_dependencies(beginner_tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+
 ## Declare a C++ executable
 # add_executable(beginner_tutorials_node src/beginner_tutorials_node.cpp)
 add_executable(talker src/talker.cpp)
 add_executable(listener src/listener.cpp)
+add_executable(TalkerService src/TalkerService.cpp)
+add_executable(TalkerClient src/TalkerClient.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(beginner_tutorials_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+add_dependencies(TalkerService ${beginner_tutorials_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(TalkerService TalkerService_msgs_generate_messages_cpp)
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(beginner_tutorials_node
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(talker ${catkin_LIBRARIES})
 target_link_libraries(listener ${catkin_LIBRARIES})
+target_link_libraries(TalkerService ${catkin_LIBRARIES})
+target_link_libraries(TalkerClient ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
