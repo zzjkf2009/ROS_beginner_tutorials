@@ -44,7 +44,7 @@ a rostest source file and launch file are created in the test folder
 **Run the test**
 ```
 catkin_make
-catkin_make run_tests_beginner_tutorials
+catkin_make run_tests
 ```
 or
 ```
